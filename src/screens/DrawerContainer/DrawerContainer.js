@@ -10,29 +10,70 @@ export default function DrawerContainer(props) {
     <View style={styles.content}>
       <View style={styles.container}>
         <MenuButton
-          title="HOME"
-          source={require("../../../assets/icons/home.png")}
+          title="Dashboard"
+          source={require("../../../assets/icons/Dashboard.png")}
+          onPress={() => {
+            navigation.navigate("Dashboard");
+            navigation.closeDrawer();
+          }}
+        />
+        <MenuButton
+          title="Profile"
+          source={require("../../../assets/icons/profile.png")}
           onPress={() => {
             navigation.navigate("Home");
             navigation.closeDrawer();
           }}
         />
         <MenuButton
-          title="CATEGORIES"
-          source={require("../../../assets/icons/category.png")}
+          title="Attendance"
+          source={require("../../../assets/icons/attendance.png")}
           onPress={() => {
             navigation.navigate("Categories");
             navigation.closeDrawer();
           }}
         />
         <MenuButton
-          title="SEARCH"
-          source={require("../../../assets/icons/search.png")}
+          title="Live GPS"
+          source={require("../../../assets/icons/GPS.png")}
           onPress={() => {
             navigation.navigate("Search");
             navigation.closeDrawer();
           }}
         />
+        <MenuButton
+          title="Forest Visit"
+          source={require("../../../assets/icons/forestvisit.jpg")}
+          onPress={() => {
+            navigation.navigate("Search");
+            navigation.closeDrawer();
+          }}
+        />
+        <MenuButton
+          title="Daily Patrol"
+          source={require("../../../assets/icons/visit.png")}
+          onPress={() => {
+            navigation.navigate("Search");
+            navigation.closeDrawer();
+          }}
+        />
+        <MenuButton
+          title="Animal Death"
+          source={require("../../../assets/icons/animaldeath.png")}
+          onPress={() => {
+            navigation.navigate("Search");
+            navigation.closeDrawer();
+          }}
+        />
+        <MenuButton
+          title="Logout"
+          source={require("../../../assets/icons/logout.png")}
+          onPress={() => {
+            navigation.navigate("Search");
+            navigation.closeDrawer();
+          }}
+        />
+
       </View>
     </View>
   );

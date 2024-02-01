@@ -42,7 +42,7 @@ export const RecipeCard = StyleSheet.create({
     marginLeft: 5,
   },
   category: {
-    marginTop: 5,
+    marginTop: 10,
     marginBottom: 5
   }
 });

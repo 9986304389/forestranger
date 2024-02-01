@@ -14,6 +14,7 @@ export default function CategoriesScreen(props) {
         fontWeight: "bold",
         textAlign: "center",
         alignSelf: "center",
+        marginTop:10,
         flex: 1,
       },
       headerLeft: () => (
