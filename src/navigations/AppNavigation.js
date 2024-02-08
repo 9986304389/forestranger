@@ -13,7 +13,8 @@ import IngredientsDetailsScreen from '../screens/IngredientsDetails/IngredientsD
 import SignIn from '../screens/SignIn/SignIn'
 import SignUP from '../screens/SignUp/SignUp';
 import RestPassword from '../screens/ResetPassword/ResetPassword';
-import Dashboard from '../screens/Dashboard/Dashbaord'
+import Dashboard from '../screens/Dashboard/Dashbaord';
+import Profile from '../screens/Profile/Profile';
 const Stack = createStackNavigator();
 
 function MainNavigator() {
@@ -37,6 +38,7 @@ function MainNavigator() {
       <Stack.Screen name="ResetPassword" component={RestPassword} />
       <Stack.Screen name='Home' component={HomeScreen} />
       <Stack.Screen name="Dashboard" component={Dashboard} />
+      <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name='Categories' component={CategoriesScreen} />
       <Stack.Screen name='Recipe' component={RecipeScreen} />
       <Stack.Screen name='RecipesList' component={RecipesListScreen} />

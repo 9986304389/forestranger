@@ -21,7 +21,7 @@ export default function DrawerContainer(props) {
           title="Profile"
           source={require("../../../assets/icons/profile.png")}
           onPress={() => {
-            navigation.navigate("Home");
+            navigation.navigate("Profile");
             navigation.closeDrawer();
           }}
         />

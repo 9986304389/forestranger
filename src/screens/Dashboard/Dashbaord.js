@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,Dimensions } from 'react-native';
 import styles from "./styles";
+import Icon from 'react-native-vector-icons/FontAwesome'; // or any other icon library you prefer
+import { AntDesign } from '@expo/vector-icons';
+import { Card } from '@rneui/themed';
 const WeekDays = () => {
   const [weekDays, setWeekDays] = useState([]);
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -44,7 +47,30 @@ const WeekDays = () => {
     ));
   };
 
-  return <View style={styles.container}>{renderWeekDays()}</View>;
+  return (
+    <View>
+      <View style={styles.weekDaysContainer}>{renderWeekDays()}</View>
+      <View style={styles.checkInOutContainer}>
+      <View style={styles.checkInCard}>
+          <Text>
+          <AntDesign name="login" size={24} color="black" />
+            {/* <Icon name="check" size={30} color="green" /> */}
+          </Text>
+          <Text style={styles.checkInText}>Check In</Text>
+          <Text>{currentDate.toDateString()}</Text>
+          <Text>{currentDate.toLocaleTimeString()}</Text>
+        </View>
+
+        <View style={styles.checkOutCard}>
+          <Text> <AntDesign name="logout" size={24} color="black" /></Text>
+          <Text style={styles.checkOutText}>Check Out</Text>
+          <Text>{currentDate.toDateString()}</Text>
+          <Text>{currentDate.toLocaleTimeString()}</Text>
+        </View>
+      </View>
+    </View>
+  );
+
 };
 
 
