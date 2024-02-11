@@ -1,11 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { RecipeCard } from '../../AppStyles';
 
 const styles = StyleSheet.create({
-  container: RecipeCard.container,
-  photo: RecipeCard.photo,
-  title: RecipeCard.title,
-  category: RecipeCard.category,
   weekDaysContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -65,5 +60,6 @@ const styles = StyleSheet.create({
 
   },
 });
+
 
 export default styles;

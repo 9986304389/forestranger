@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{useLayoutEffect} from 'react';
 import { View } from 'react-native'
+import MenuImage from "../../components/MenuImage/MenuImage";
 import { StyleSheet, Dimensions, ScrollView, Image, ImageBackground, Platform } from 'react-native';
 import { Block, Text, theme, Button as GaButton } from 'galio-framework';
 
@@ -11,7 +12,20 @@ const { width, height } = Dimensions.get('screen');
 
 const thumbMeasure = (width - 48 - 32) / 3;
 
-export default function Profile () {
+export default function Profile (props) {
+  const { navigation } = props;
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <MenuImage
+          onPress={() => {
+            navigation.openDrawer();
+          }}
+        />
+      ),
+      headerRight: () => <View />,
+    });
+  }, []);
   return (
     <View>
     <Block style={{

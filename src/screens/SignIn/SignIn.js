@@ -18,7 +18,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 const appId = "1047121222092614";
 
 export default function LoginScreen({ navigation }) {
-  const onLoginPress = () => { navigation.navigate('Home') };
+  const onLoginPress = () => { navigation.navigate('Dashboard') };
 
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
