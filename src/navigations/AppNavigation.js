@@ -26,7 +26,7 @@ function MainNavigator() {
           textAlign: 'center',
           alignSelf: 'center',
           display: 'flex',
-          marginTop: 10,
+          marginTop: 12,
           flex: 1,
         }
       }}

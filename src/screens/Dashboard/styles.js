@@ -64,6 +64,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
 
   },
+  cardtitile:{
+    fontSize:20,
+    textAlign:"center"
+  },
+  taskcount:{
+    margin:10,
+    fontSize:30,
+    color:"#000080",
+    fontWeight:"800"
+  }
 });
 
 export default styles;
