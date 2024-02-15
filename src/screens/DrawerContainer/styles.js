@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     paddingHorizontal: 15,
-    paddingBottom: 100
+    paddingBottom: 100,
+    
   },
   menutitle: {
     fontSize: 18,
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 40, // Set custom width
     height: 40, // Set custom height
-    marginTop: 8,
+    marginTop: 10,
     borderRadius: 100, // Adjust the border radius as needed
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },

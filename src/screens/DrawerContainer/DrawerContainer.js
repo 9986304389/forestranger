@@ -28,13 +28,13 @@ export default function DrawerContainer(props) {
         }} activeOpacity={1}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <View style={styles.iconContainer}>
-              <Icon name="check-circle" style={styles.icon} />
+              <Icon name="calendar" style={styles.icon} />
             </View>
             <Text style={styles.menutitle}>Attendance</Text>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {
+        {/* <TouchableOpacity onPress={() => {
           // navigation.navigate("Attendance");
           // navigation.closeDrawer();
         }} activeOpacity={1}>
@@ -44,7 +44,7 @@ export default function DrawerContainer(props) {
             </View>
             <Text style={styles.menutitle}>Daily Activities</Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TouchableOpacity onPress={() => {
           // navigation.navigate("Attendance");
@@ -64,7 +64,7 @@ export default function DrawerContainer(props) {
         }} activeOpacity={1}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <View style={styles.iconContainer}>
-              <Icon name="handshake-o" style={styles.icon} />
+              <Icon name="tachometer" style={styles.icon} />
             </View>
             <Text style={styles.menutitle}>Daily Patrol</Text>
           </View>
@@ -82,7 +82,7 @@ export default function DrawerContainer(props) {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {
+        {/* <TouchableOpacity onPress={() => {
           // navigation.navigate("Attendance");
           // navigation.closeDrawer();
         }} activeOpacity={1}>
@@ -92,7 +92,7 @@ export default function DrawerContainer(props) {
             </View>
             <Text style={styles.menutitle}>Leave Application</Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TouchableOpacity onPress={() => {
           navigation.navigate("MyAccount");

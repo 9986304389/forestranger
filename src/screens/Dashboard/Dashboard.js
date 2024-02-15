@@ -1,14 +1,18 @@
 import React, { useLayoutEffect, useState, useEffect } from "react";
-import { FlatList, Text, View, TouchableHighlight, Image } from "react-native";
+import { FlatList, Text, View, TouchableOpacity, Image } from "react-native";
 import styles from "./styles";
 import { AntDesign } from '@expo/vector-icons';
 import { recipes } from "../../data/dataArrays";
 import MenuImage from "../../components/MenuImage/MenuImage";
 import { getCategoryName } from "../../data/MockDataAPI";
 import axios from 'axios';
-import { PieChart } from "react-native-chart-kit";
+import { BarChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native"
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+
 export default function Dashboard(props) {
+
   const { navigation } = props;
 
   useLayoutEffect(() => {
@@ -90,75 +94,91 @@ export default function Dashboard(props) {
     //   <View style={styles.weekDaysContainer}>{renderWeekDays()}</View>
 
     // </View>
-    <View>
+    <View style={styles.MainContainer}>
       <View style={styles.checkInOutContainer}>
-
-        <View style={styles.checkInCard}>
+        {/* <View style={styles.checkInCard}>
           <Text style={styles.cardtitile}>Today Assigned job</Text>
           <Text style={styles.taskcount}>3</Text>
           <Text>{currentDate.toDateString()}</Text>
+        </View> */}
+        <TouchableOpacity style={styles.card} onPress={() => {
+          navigation.navigate("MyAccount");
+        }}>
+          <View >
+            <View style={styles.iconContainer}>
+              <Icon name="user" style={styles.icon} />
+            </View>
+            <Text style={styles.nameoftitle}>Profile</Text>
+          </View>
+        </TouchableOpacity>
+        <View style={styles.card}>
+          <View style={styles.iconContainer}>
+            <Icon name="calendar" style={styles.icon} />
+          </View>
+          <Text style={styles.nameoftitle}>Attendance</Text>
+        </View>
 
-        </View>
-        <View style={styles.checkOutCard}>
-          <Text style={styles.cardtitile}>Total no of jobs</Text>
-          <Text style={styles.taskcount}>100</Text>
-        </View>
       </View>
       <View style={styles.checkInOutContainer}>
-        <View style={styles.checkInCard}>
+        {/* <View style={styles.checkInCard}>
           <Text style={styles.cardtitile}>Completed jobs</Text>
           <Text style={styles.taskcount}>80</Text>
+        </View> */}
+        <View style={styles.card}>
+          <View style={styles.iconContainer}>
+            <Icon name="tachometer" style={styles.icon} />
+          </View>
+          <Text style={styles.nameoftitle}>DailyPatrol</Text>
         </View>
 
-        <View style={styles.checkOutCard}>
-          <Text style={styles.cardtitile}>Pending job</Text>
-          <Text style={styles.taskcount}>20</Text>
+        <View style={styles.card}>
+          <View style={styles.iconContainer}>
+            <Icon name="paw" style={styles.icon} />
+          </View>
+          <Text style={styles.nameoftitle}>AnimalDeath</Text>
         </View>
+
       </View>
-      <ChartComponent />
+      <View style={styles.checkInOutContainer}>
+        {/* <View style={styles.checkInCard}>
+          <Text style={styles.cardtitile}>Completed jobs</Text>
+          <Text style={styles.taskcount}>80</Text>
+        </View> */}
+        <View style={styles.card}>
+          <View style={styles.iconContainer}>
+            <Icon name="tree" style={styles.icon} />
+          </View>
+          <Text style={styles.nameoftitle}>ForestVisit</Text>
+        </View>
+
+      </View>
+      {/* <ChartComponent /> */}
     </View>
   );
 }
 
 const ChartComponent = () => {
+  // Get current date
+  const currentDate = new Date();
+
+  // Function to format date as "dd-Jan-2024"
+  const formatDate = (date) => {
+    const day = date.getDate().toString().padStart(2, '0'); // Get day and pad with zero if necessary
+    const month = date.toLocaleString('en-US', { month: 'short' }); // Get abbreviated month name
+    const year = date.getFullYear(); // Get full year
+    return `${day}-${month}-${year}`;
+  };
+
   //const [chartData, setChartData] = useState({});
-  const data = [
-    {
-      name: "Seoul",
-      population: 21500000,
-      color: "rgba(131, 167, 234, 1)",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    },
-    {
-      name: "Toronto",
-      population: 2800000,
-      color: "#F00",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    },
-    {
-      name: "Beijing",
-      population: 527612,
-      color: "red",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    },
-    {
-      name: "New York",
-      population: 8538000,
-      color: "#ffffff",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    },
-    {
-      name: "Moscow",
-      population: 11920000,
-      color: "rgb(0, 0, 255)",
-      legendFontColor: "#7F7F7F",
-      legendFontSize: 15
-    }
-  ];
+  const data = {
+    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], // Days of the week
+    datasets: [
+      {
+        data: [8, 7, 6, 8, 9, 5, 0] // Sample employee login hours data for each day
+      }
+    ]
+  };
+
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
@@ -205,34 +225,32 @@ const ChartComponent = () => {
   //   return () => clearInterval(interval);
   // }, []);
 
+  const chartConfig = {
+    backgroundGradientFrom: "#FFFFFF",
+    backgroundGradientTo: "#FFFFFF",
+    color: (opacity = 1) => `rgba(0, 0, 225, ${opacity})`, // Blue color for bars
+    strokeWidth: 0, // Remove bar stroke
+    barPercentage: 1, // Adjust bar width
+
+  };
   return (
-    <View style={{ marginTop: 40 }}>
-      <Text style={{ textAlign: "center", marginTop: 10, fontSize: 20, color:"#000080" }}>Job Overview</Text>
-      <PieChart
+    <View style={{ marginTop: 20 }}>
+      <Text style={{ textAlign: "center", margin: 8, fontSize: 20, color: "#000080" }}>{formatDate(currentDate)}</Text>
+      <BarChart
         data={data}
         width={Dimensions.get("window").width}
-        height={220}
-        chartConfig={{
-          backgroundColor: "#e26a00",
-          backgroundGradientFrom: "#fb8c00",
-          backgroundGradientTo: "#ffa726",
-          decimalPlaces: 2, // optional, defaults to 2dp
-          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          style: {
-            borderRadius: 16
-          },
-          propsForDots: {
-            r: "6",
-            strokeWidth: "2",
-            stroke: "#ffa726"
-          }
+        height={250}
+        chartConfig={chartConfig}
+        showValuesOnTopOfBars={false} // Remove dots and show values on top of bars
+        hideYAxisLabel={false} // Hide y-axis labels
+        fromZero={true} // Start y-axis from zero
+        style={{
+          paddingRight: 40,
+          borderRadius: 20
         }}
-        accessor={"population"}
-        backgroundColor={"transparent"}
-        paddingLeft={"5"}
-        center={[10, 10]}
-        absolute
+        yAxisLabel=""
+        paddingRight={"20"}
+        withInnerLines={false} // Remove dot line
       />
     </View>
   );
